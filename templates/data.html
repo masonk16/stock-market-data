@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for day in data %}
+    {{ day.high }}
+    {{ day.low }}
+    {{ day.open }}
+    {{ day.close }}
+{% endfor %}
+{% endblock %}

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="POST">
+<form method="POST" action="/">
     {{ form.symbol }}
-    {{ form.date }}
-    <input type="submit" value="Go">
+    {{ form.date_from }}
+    {{ form.date_to }}
+    {{ form.submit }}
 </form>
 {% endblock %}
