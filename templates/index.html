@@ -21,5 +21,24 @@
             </form>
         </div>
     </div>
+    <hr>
+    <div class="table-responsive">
+    <table class="table caption-top">
+      <caption>List of Symbols</caption>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for symbol in symbols %}
+        <tr>
+          <th scope="row">{{ symbol.name }}</th>
+          <td>{{ symbol.symbol }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 </div>
 {% endblock %}

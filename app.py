@@ -39,7 +39,9 @@ def index():
         date_to = form.date_to.data
         return redirect(f"/stock_data/{symbol}/{date_from}/{date_to}")
 
-    return render_template("index.html", form=form)
+    response = requests.get(f'http://api.marketstack.com/v1/tickers?access_key={API_ACCESS_KEY}')
+    symbols = response.json()['data']
+    return render_template("index.html", form=form, symbols=symbols)
 
 
 @app.route("/stock_data/<symbol>/<date_from>/<date_to>")
