@@ -1,10 +1,21 @@
 from flask import Flask, render_template
+from flask_bootstrap import Bootstrap5
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 
+bootstrap = Bootstrap5(app)
 
-@app.route('/')
-def hello_world():  # put application's code here
+
+class Form(FlaskForm):
+    symbol = StringField('symbol')
+    date = StringField('date', validators=[DataRequired()])
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
     return render_template('index.html')
 
 
