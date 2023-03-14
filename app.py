@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, DateField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -17,8 +17,9 @@ class Form(FlaskForm):
     """
     Form to get data for requesting stock data.
     """
-    symbol = StringField('symbol')
-    date = StringField('date', validators=[DataRequired()])
+    symbol = StringField('symbol', validators=[DataRequired()])
+    date_from = DateField('date_from', validators=[DataRequired()])
+    date_to = DateField('date_to', validators=[DataRequired()])
 
 
 @app.route('/', methods=['GET', 'POST'])
