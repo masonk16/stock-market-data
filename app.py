@@ -25,8 +25,8 @@ class MyForm(FlaskForm):
     """
 
     symbol = StringField("symbol", validators=[DataRequired()])
-    date_from = DateField("date_from", validators=[DataRequired()])
-    date_to = DateField("date_to", validators=[DataRequired()])
+    date_from = DateField("date_from")
+    date_to = DateField("date_to")
     submit = SubmitField("Submit")
 
 

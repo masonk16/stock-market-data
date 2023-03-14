@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="POST" action="/">
-    {{ form.symbol }}
-    {{ form.date_from }}
-    {{ form.date_to }}
-    {{ form.submit }}
-</form>
+<div class="container">
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Get Historical Market Data</h1>
+        <div class="col-lg-6 mx-auto">
+            <form method="POST" action="/">
+                {{ form.symbol }}
+                {{ form.date_from }}
+                {{ form.date_to }}
+                {{ form.submit }}
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
