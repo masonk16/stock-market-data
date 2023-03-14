@@ -25,8 +25,8 @@ class MyForm(FlaskForm):
     """
 
     symbol = StringField("symbol", validators=[DataRequired()])
-    date_from = DateField("date_from")
-    date_to = DateField("date_to")
+    date_from = DateField("date_from", format="%Y-%m-%d")
+    date_to = DateField("date_to", format="%Y-%m-%d")
     submit = SubmitField("Submit")
 
 
@@ -38,21 +38,18 @@ def index():
         symbol = form.symbol.data
         date_from = form.date_from.data
         date_to = form.date_to.data
-        return redirect(f'/stock_data/{symbol}/{date_from}/{date_to}')
+        return redirect(f"/stock_data/{symbol}/{date_from}/{date_to}")
 
     return render_template("index.html", form=form)
 
 
 @app.route("/stock_data/<symbol>/<date_from>/<date_to>")
 def stock_data(symbol, date_from, date_to):
-    response = requests.get(f"http://api.marketstack.com/v1/eod?access_key={API_ACCESS_KEY}&symbols={symbol}")
+    response = requests.get(
+        f"http://api.marketstack.com/v1/eod?access_key={API_ACCESS_KEY}&symbols={symbol}&date_from={date_from}&date_to={date_to}"
+    )
     data = response.json()["data"]
     return render_template("data.html", symbol=symbol, data=data)
-
-
-@app.route('/test')
-def test():
-    return "Done Testing!"
 
 
 if __name__ == "__main__":
