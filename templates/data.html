@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-{% for day in data %}
-    {{ day.date }}
-    {{ day.high }}
-    {{ day.low }}
-    {{ day.open }}
-    {{ day.close }}
-{% endfor %}
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold mb-4">{{ symbol }} Historical Market Data</h1>
+        <div class="row">
+        {% for day in data %}
+        <div class="col-lg-3 col-md-4 col-sm-8 mb-3 mb-sm-0">
+            <div class="card border-success mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-transparent border-success">{{ day.date }}</div>
+                <div class="card-body">
+                    <p class="fw-bold">Opening: ${{ day.open }}</p>
+                    <p class="fw-bold">Closing: ${{ day.close }}</p>
+                    <p class="fw-bold text-success">High: ${{ day.high }}</p>
+                    <p class="fw-bold text-danger text-wrap">Low: ${{ day.low }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

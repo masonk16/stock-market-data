@@ -47,7 +47,7 @@ def index():
 def stock_data(symbol, date_from, date_to):
     response = requests.get(f"http://api.marketstack.com/v1/eod?access_key={API_ACCESS_KEY}&symbols={symbol}")
     data = response.json()["data"]
-    return render_template("data.html", data=data)
+    return render_template("data.html", symbol=symbol, data=data)
 
 
 @app.route('/test')
