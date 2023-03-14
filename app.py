@@ -24,10 +24,9 @@ class MyForm(FlaskForm):
     Form to get data for requesting stock data.
     """
 
-    symbol = StringField("symbol", validators=[DataRequired()])
-    date_from = DateField("date_from", format="%Y-%m-%d")
-    date_to = DateField("date_to", format="%Y-%m-%d")
-    submit = SubmitField("Submit")
+    symbol = StringField("Symbol", validators=[DataRequired()])
+    date_from = DateField("From", format="%Y-%m-%d")
+    date_to = DateField("To", format="%Y-%m-%d")
 
 
 @app.route("/", methods=["GET", "POST"])

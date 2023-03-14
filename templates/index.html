@@ -5,10 +5,19 @@
         <h1 class="display-5 fw-bold">Get Historical Market Data</h1>
         <div class="col-lg-6 mx-auto">
             <form method="POST" action="/">
-                {{ form.symbol }}
-                {{ form.date_from }}
-                {{ form.date_to }}
-                {{ form.submit }}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">{{ form.symbol.label }}</label>
+                    {{ form.symbol(class_="form-control text-center", size=25) }}
+                </div>
+                <div class="mb-3">
+                    <label for="date_from" class="form-label">{{ form.date_from.label }}</label>
+                    {{ form.date_from(class_="form-control text-center", size=25) }}
+                </div>
+                <div class="mb-3">
+                    <label for="date_to" class="form-label">{{ form.date_to.label }}</label>
+                    {{ form.date_to(class_="form-control text-center", size=25) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
